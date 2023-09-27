@@ -9,7 +9,7 @@
 			<attributo chiave="false">Cognome</attributo>
 			<attributo chiave="false">Password</attributo>
 			<attributo chiave="true">CodiceFiscale</attributo>
-			<idesterna>false</idesterna>
+			<idesterna>true</idesterna>
 			<note>
 				<documentazione></documentazione>
 				<vincoli></vincoli>
@@ -20,7 +20,7 @@
 			<nome>Menu</nome>
 			<attributo chiave="true">Id</attributo>
 			<attributo chiave="false">Nome</attributo>
-			<idesterna>false</idesterna>
+			<idesterna>true</idesterna>
 			<note>
 				<documentazione></documentazione>
 				<vincoli></vincoli>
@@ -54,6 +54,49 @@
 			<attributo chiave="false">Nome</attributo>
 			<attributo chiave="false">Calorie</attributo>
 			<attributo chiave="true">Id</attributo>
+			<idesterna>false</idesterna>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</entita>
+		<entita id="10">
+			<nome>UtenteAUSL</nome>
+			<attributo chiave="false">Password</attributo>
+			<attributo chiave="true">Email</attributo>
+			<idesterna>false</idesterna>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</entita>
+		<entita id="12">
+			<nome>RichiestaModifica</nome>
+			<idesterna>false</idesterna>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</entita>
+		<entita id="14">
+			<nome>RichiestaModifica</nome>
+			<attributo chiave="false">Data</attributo>
+			<attributo chiave="false">Approvato</attributo>
+			<idesterna>false</idesterna>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</entita>
+		<entita id="17">
+			<nome>UtenteCucina</nome>
+			<attributo chiave="true">Username</attributo>
+			<attributo chiave="false">Password</attributo>
+			<attributo chiave="false">Email</attributo>
 			<idesterna>false</idesterna>
 			<note>
 				<documentazione></documentazione>
@@ -126,6 +169,96 @@
 				</associazione>
 				<associazione>
 					<entitacoll href="4">Piatto</entitacoll>
+					<molteplicita>(0,N)</molteplicita>
+				</associazione>
+			</associazioni>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</relazione>
+		<relazione>
+			<nome>Creazione</nome>
+			<associazioni>
+				<associazione>
+					<entitacoll href="10">UtenteAUSL</entitacoll>
+					<molteplicita>(0,1)</molteplicita>
+				</associazione>
+				<associazione>
+					<entitacoll href="2">Menu</entitacoll>
+					<molteplicita>(0,N)</molteplicita>
+				</associazione>
+			</associazioni>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</relazione>
+		<relazione>
+			<nome></nome>
+			<associazioni>
+				<associazione>
+					<entitacoll href="14">RichiestaModifica</entitacoll>
+					<molteplicita>(0,N)</molteplicita>
+				</associazione>
+				<associazione>
+					<entitacoll href="2">Menu</entitacoll>
+					<molteplicita>(1,1)</molteplicita>
+				</associazione>
+			</associazioni>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</relazione>
+		<relazione>
+			<nome></nome>
+			<associazioni>
+				<associazione>
+					<entitacoll href="1">Utente</entitacoll>
+					<molteplicita>(1,1)</molteplicita>
+				</associazione>
+				<associazione>
+					<entitacoll href="14">RichiestaModifica</entitacoll>
+					<molteplicita>(0,N)</molteplicita>
+				</associazione>
+			</associazioni>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</relazione>
+		<relazione>
+			<nome></nome>
+			<associazioni>
+				<associazione>
+					<entitacoll href="14">RichiestaModifica</entitacoll>
+					<molteplicita>(0,N)</molteplicita>
+				</associazione>
+				<associazione>
+					<entitacoll href="10">UtenteAUSL</entitacoll>
+					<molteplicita>(1,1)</molteplicita>
+				</associazione>
+			</associazioni>
+			<note>
+				<documentazione></documentazione>
+				<vincoli></vincoli>
+				<altro></altro>
+			</note>
+		</relazione>
+		<relazione>
+			<nome>AssociazioneCucine</nome>
+			<associazioni>
+				<associazione>
+					<entitacoll href="1">Utente</entitacoll>
+					<molteplicita>(0,N)</molteplicita>
+				</associazione>
+				<associazione>
+					<entitacoll href="17">UtenteCucina</entitacoll>
 					<molteplicita>(0,N)</molteplicita>
 				</associazione>
 			</associazioni>
