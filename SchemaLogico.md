@@ -1,7 +1,7 @@
 # Schema logico per database
 ## Composizione dei menu
-- INGREDIENTE(<ins>Id</ins>, Nome, Calorie)\
-- ALIMENTO(<ins>Id</ins>, Nome)\
+- INGREDIENTE(<ins>Id</ins>, Nome, Calorie)
+- ALIMENTO(<ins>Id</ins>, Nome)
 - COMPOSIZIONEALIMENTO(<ins>IdIngrediente*</ins>,<ins>IdAlimento*</ins>)
 - PIATTO(<ins>Id</ins>, Nome)
 - COMPOSIZIONEPIATTO(<ins>IdAlimento*</ins>, <ins>IdPiatto*</ins>)
