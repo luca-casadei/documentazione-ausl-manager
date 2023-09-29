@@ -5,10 +5,30 @@
 - COMPOSIZIONEALIMENTO(<ins>IdIngrediente*</ins>,<ins>IdAlimento*</ins>)
 - PIATTO(<ins>Id</ins>, Nome)
 - COMPOSIZIONEPIATTO(<ins>IdAlimento*</ins>, <ins>IdPiatto*</ins>)
+- MENU(<ins>Id</ins>,Node, EmailUtenteAUSL*)
+- COMPOSIZIONEMENU(<ins>IdPiatto*</ins>, <ins>IdMenu*</ins>)
+
+## Utenti
 - UTENTECUCINA(<ins>Username</ins>, Email, Password)
-- UTENTE(<ins>CodiceFiscale</ins>, Nome, Cognome, Email, Password, IdMenu*)
+- BAMBINO(<ins>CodiceFiscale</ins>,DataNascita, Nome, Cognome,EmailFamiglia*)
+- ACCOUNTFAMIGLIA(<ins>Email</ins>, Password)
 - ASSOCIAZIONECUCINE(<ins>UsernameUtenteCucina*</ins>, <ins>CodiceFiscaleUtente*</ins>)
 - UTENTEAUSL(<ins>Email</ins>, Password)
-- MENU(<ins>Id</ins>, EmailUtenteAUSL*)
-- COMPOSIZIONEMENU(<ins>IdPiatto*</ins>, <ins>IdMenu*</ins>)
-- RICHIESTAMODIFICA(<ins>CodiceFiscaleUtente*</ins>, <ins>IdMenu*</ins>, Data, Approvato, EmailUtenteAUSL*)
+- RICHIESTAMODIFICA(<ins>CodiceFiscaleBambino*</ins>, <ins>IdMenu*</ins>,<ins>NumeroRichiesta</ins>, Data, Approvato, EmailUtenteAUSL*)
+- MENUBAMBINO(<ins>IdMenu*</ins>,<ins>CodiceFiscale*</ins>, Stagione)
+
+## Foreign keys
+COMPOSIZIONEALIMENTO.IdIngrediente > INGREDIENTE
+COMPOSIZIONEALIMENTO.IdAlimento > ALIMENTO
+COMPOSIZIONEPIATTO.IdAlimento > ALIMENTO
+COMPOSIZIONEPIATTO.IdPiatto > PIATTO
+MENU.EmailUtenteAUSL > UTENTEAUSL
+COMPOSIZIONEMENU.IdPiatto > PIATTO
+COMPOSIZIONEMENU.IdMenu > MENU
+BAMBINO.EmailFamiglia > ACCOUNTFAMIGLIA
+ASSOCIAZIONECUCINE.UsernameUtenteCucina > UTENTECUCINA
+ASSOCIAZIONECUCINE.CodiceFiscaleUtente > BAMBINO
+RICHIESTAMODIFICA {CodiceFiscaleBambino, IdMenu} > MENUBAMBINO
+RICHIESTAMODIFICA.EmailUtenteAUSL > UTENTEAUSL
+MENUBAMBINO.CodiceFiscale > BAMBINO
+MENUBAMBINO.IdMenu > MENU
