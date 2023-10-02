@@ -1,10 +1,8 @@
 /*ATTENZIONE, TUTTE LE TABELLE VERRANNO SVUOTATE ALL'ESECUZIONE.*/
 TRUNCATE TABLE ASSOCIAZIONECUCINE;
 TRUNCATE TABLE BAMBINO;
-TRUNCATE TABLE ACCOUNTFAMIGLIA;
 TRUNCATE TABLE UTENTECUCINA;
 
-INSERT INTO ACCOUNTFAMIGLIA(Email,Password) VALUES("prova@famiglia.it","PROVA");
-INSERT INTO BAMBINO(CodiceFiscale,DataNascita,EmailFamiglia,Nome,Cognome) VALUES("CSDLC03UIH", "19/06/2003", "prova@famiglia.it", "Luca", "Baluca");
+INSERT INTO BAMBINO(CodiceFiscale,DataNascita,Email,Nome,Cognome,Password) VALUES("CSDLC03UIH", "19/06/2003", "prova@famiglia.it", "Luca", "Baluca","PROVA");
 INSERT INTO UTENTECUCINA(Username, Email, Password) VALUES("cucinaprova", "cucinaprova@caritas.it","PROVA2");
 INSERT INTO ASSOCIAZIONECUCINE(CodiceFiscaleBambino,UsernameCucina) VALUES("CSDLC03UIH","cucinaprova");
