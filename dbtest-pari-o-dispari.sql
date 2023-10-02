@@ -3,6 +3,6 @@ TRUNCATE TABLE ASSOCIAZIONECUCINE;
 TRUNCATE TABLE BAMBINO;
 TRUNCATE TABLE UTENTECUCINA;
 
-INSERT INTO BAMBINO(CodiceFiscale,DataNascita,Email,Nome,Cognome,Password) VALUES("CSDLC03UIH", "19/06/2003", "prova@famiglia.it", "Luca", "Baluca","PROVA");
+INSERT INTO BAMBINO(CodiceFiscale,DataNascita,Email,Nome,Cognome,Password) VALUES("CSDLC03UIH", "2003-12-30", "prova@famiglia.it", "Luca", "Baluca","PROVA");
 INSERT INTO UTENTECUCINA(Username, Email, Password) VALUES("cucinaprova", "cucinaprova@caritas.it","PROVA2");
 INSERT INTO ASSOCIAZIONECUCINE(CodiceFiscaleBambino,UsernameCucina) VALUES("CSDLC03UIH","cucinaprova");
