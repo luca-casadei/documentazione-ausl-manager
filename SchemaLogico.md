@@ -10,8 +10,7 @@
 
 ## Utenti
 - UTENTECUCINA(<ins>Username</ins>, Email, Password)
-- BAMBINO(<ins>CodiceFiscale</ins>,DataNascita, Nome, Cognome,EmailFamiglia*)
-- ACCOUNTFAMIGLIA(<ins>Email</ins>, Password)
+- BAMBINO(<ins>CodiceFiscale</ins>,DataNascita,Email,Password, Nome, Cognome)
 - ASSOCIAZIONECUCINE(<ins>UsernameUtenteCucina*</ins>, <ins>CodiceFiscaleUtente*</ins>)
 - UTENTEAUSL(<ins>Email</ins>, Password)
 - RICHIESTAMODIFICA(<ins>CodiceFiscaleBambino*</ins>, <ins>IdMenu*</ins>,<ins>NumeroRichiesta</ins>, Data, Approvato, EmailUtenteAUSL*)
@@ -25,7 +24,6 @@ COMPOSIZIONEPIATTO.IdPiatto > PIATTO
 MENU.EmailUtenteAUSL > UTENTEAUSL
 COMPOSIZIONEMENU.IdPiatto > PIATTO
 COMPOSIZIONEMENU.IdMenu > MENU
-BAMBINO.EmailFamiglia > ACCOUNTFAMIGLIA
 ASSOCIAZIONECUCINE.UsernameUtenteCucina > UTENTECUCINA
 ASSOCIAZIONECUCINE.CodiceFiscaleUtente > BAMBINO
 RICHIESTAMODIFICA {CodiceFiscaleBambino, IdMenu} > MENUBAMBINO
