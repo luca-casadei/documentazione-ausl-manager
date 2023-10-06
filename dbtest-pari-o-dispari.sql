@@ -10,8 +10,8 @@ TRUNCATE TABLE COMPOSIZIONEMENU;
 TRUNCATE TABLE RICHIESTAMODIFICA;
 
 
-INSERT INTO BAMBINO(CodiceFiscale,DataNascita,Email,Nome,Cognome,Password) VALUES("CSDLC03UIH", "2003-12-30", "prova@famiglia.it", "Luca", "Baluca","PROVA");
-INSERT INTO UTENTECUCINA(Username, Email, Password) VALUES ("cucinaprova", "cucinaprova@caritas.it","PROVA2");
+INSERT INTO BAMBINO(CodiceFiscale,DataNascita,Email,Nome,Cognome,Password) VALUES("CSDLC03UIH", "2003-12-30", "prova@famiglia.it", "Luca", "Baluca","5feefe7f33e95ec1b9122c4e8a3f556d4a999671813bb998e1ded07b1a6a0f8609fb4f625e3dcf904d489746801473bee7a1659ad506ab955540f96c4c3cb5da");
+INSERT INTO UTENTECUCINA(Username, Email, Password) VALUES ("cucinaprova", "cucinaprova@caritas.it","5feefe7f33e95ec1b9122c4e8a3f556d4a999671813bb998e1ded07b1a6a0f8609fb4f625e3dcf904d489746801473bee7a1659ad506ab955540f96c4c3cb5da");
 INSERT INTO ASSOCIAZIONECUCINE(CodiceFiscaleBambino,UsernameCucina) VALUES ("CSDLC03UIH","cucinaprova");
 INSERT INTO UTENTEAUSL(Email, Password) VALUES ('admin@pariodispari.com', '5feefe7f33e95ec1b9122c4e8a3f556d4a999671813bb998e1ded07b1a6a0f8609fb4f625e3dcf904d489746801473bee7a1659ad506ab955540f96c4c3cb5da');
 INSERT INTO MENU(Id,EmailCreatore,Nome) VALUES (1,"admin@pariodispari.com","Menu prova");
