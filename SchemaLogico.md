@@ -1,32 +1,39 @@
-# Schema logico per database
-## Composizione dei menu
-- INGREDIENTE(<ins>Id</ins>, Nome, Calorie)
-- ALIMENTO(<ins>Id</ins>, Nome)
-- COMPOSIZIONEALIMENTO(<ins>IdIngrediente*</ins>,<ins>IdAlimento*</ins>)
-- PIATTO(<ins>Id</ins>, Nome)
-- COMPOSIZIONEPIATTO(<ins>IdAlimento*</ins>, <ins>IdPiatto*</ins>)
-- MENU(<ins>Id</ins>,Node, EmailUtenteAUSL*)
-- COMPOSIZIONEMENU(<ins>IdPiatto*</ins>, <ins>IdMenu*</ins>)
+# Schema logico Pari o Dispari
 
-## Utenti
-- UTENTECUCINA(<ins>Username</ins>, Email, Password)
-- BAMBINO(<ins>CodiceFiscale</ins>,DataNascita,Email,Password, Nome, Cognome)
-- ASSOCIAZIONECUCINE(<ins>UsernameUtenteCucina*</ins>, <ins>CodiceFiscaleUtente*</ins>)
-- UTENTEAUSL(<ins>Email</ins>, Password)
-- RICHIESTAMODIFICA(<ins>CodiceFiscaleBambino*</ins>, <ins>IdMenu*</ins>,<ins>NumeroRichiesta</ins>, Data, Approvato, EmailUtenteAUSL*)
-- MENUBAMBINO(<ins>IdMenu*</ins>,<ins>CodiceFiscale*</ins>, Stagione)
+## Entità principali
 
-## Foreign keys
-COMPOSIZIONEALIMENTO.IdIngrediente > INGREDIENTE
-COMPOSIZIONEALIMENTO.IdAlimento > ALIMENTO
-COMPOSIZIONEPIATTO.IdAlimento > ALIMENTO
-COMPOSIZIONEPIATTO.IdPiatto > PIATTO
-MENU.EmailUtenteAUSL > UTENTEAUSL
-COMPOSIZIONEMENU.IdPiatto > PIATTO
-COMPOSIZIONEMENU.IdMenu > MENU
-ASSOCIAZIONECUCINE.UsernameUtenteCucina > UTENTECUCINA
-ASSOCIAZIONECUCINE.CodiceFiscaleUtente > BAMBINO
-RICHIESTAMODIFICA {CodiceFiscaleBambino, IdMenu} > MENUBAMBINO
-RICHIESTAMODIFICA.EmailUtenteAUSL > UTENTEAUSL
-MENUBAMBINO.CodiceFiscale > BAMBINO
-MENUBAMBINO.IdMenu > MENU
+UTENTE(<ins>Tessera</ins>,*CodiceScuola*,Cognome,Nome,DataNascita,Email,Password,CodiceFiscale)
+UTENTEAUSL(<ins>Email</ins>,Password)
+UTENTECUCINA(<ins>Username</ins>,Password,Email)
+MENU(<ins>Id</ins>,*EmailAusl*,Nome)
+PORTATA(<ins>Id</ins>,Note,Contenuto,Tipo)
+MENUTENTE(<ins>*TesseraUtente*</ins>,<ins>*IdMenu*</ins>,<ins>Numero</ins>,Stagione,Modificato);
+RICHIESTAMODIFICA(<ins>NumeroRichiesta</ins>,*Tessera*,*IdMenu*,*UtenteAusl*,Data,Approvato)
+SCUOLA(<ins>CodiceMeccanografico</ins>,*CodiceComunale*,Tipologia,Indirizzo,CAP,Denominazione)
+COMUNE(<ins>Codice</ins>,*CodiceProvinciale*,Nome)
+PROVINCIA(<ins>Codice</ins>,Nome,Sigla,*CodiceRegionale*)
+REGIONE(<ins>Codice</ins>,Nome)
+
+## Relazioni
+
+ATTRIBUZIONEPORTATE(<ins>*IdMenu*</ins>,<ins>*IdPortata*</ins>)
+ATTRIBUZIONESCUOLACUOCHI(<ins>*CodiceScuola*</ins>,<ins>*UsernameUtenteCucina*</ins>)
+ASSOCIAZIONECUCINE(<ins>*UsernameCuoco*</ins>,<ins>*TesseraUtente*</ins>)
+
+## FOREIGN KEYS
+UTENTE.CodiceScuola → SCUOLA
+MENU.EmailAusl → UTENTEAUSL
+MENUTENTE.TesseraUtente → UTENTE
+MENUTENTE.IdMenu → MENU
+RICHIESTAMODIFICA.Tessera → UTENTE
+RICHIESTAMODIFICA.IdMenu → MENU
+RICHIESTAMODIFICA.UtenteAusl → UTENTEAUSL
+SCUOLA.CodiceComunale → COMUNE
+COMUNE.CodiceProvinciale → PROVINCIA
+PROVINCIA.CodiceRegionale → REGIONE
+ATTRIBUZIONEPORTATE.IdMenu → MENU
+ATTRIBUZIONEPORTATE.IdPortata* → PORTATA
+ATTRIBUZIONESCUOLACUOCHI.CodiceScuola → SCUOLA
+ATTRIBUZIONESCUOLACUOCHI.UsernameUtenteCucina → UTENTECUCINA
+ASSOCIAZIONECUCINE.UsernameCuoco → UTENTECUCINA
+ASSOCIAZIONECUCINE.TesseraUtente → UTENTE
